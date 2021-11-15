@@ -14,8 +14,8 @@
 		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:XE"></property> 
          <!-- Oracle 11g 경우 value="jdbc:oracle:thin:@URL주소:1521:XE" -->
          <!-- Oracle 19  경우 value="jdbc:oracle:thin:@URL주소:1521:orcl" -->
-		<property name="username" value="C##jmk"></property>
-		<property name="password" value="1234"></property>
+		<property name="username" value="@@@@"></property>
+		<property name="password" value="@@@@"></property>
 	</bean>	
 	
 	<bean id="datasource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
