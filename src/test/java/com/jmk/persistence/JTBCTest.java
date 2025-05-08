@@ -16,22 +16,20 @@ public class JTBCTest {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Test
 	public void testConnection() {
-		
-		try(Connection con = 
+
+		try(Connection con =
 				DriverManager.getConnection(
-                // Oracle19 ¹öÀüÀÎ °æ¿ì => "jdbc:oracle:thin:@localhost:1521:orcl"
-                // Oracle11 ¹öÀüÀÎ °æ¿ì => "jdbc:oracle:thin:@localhost:1521:XE"
-						"jdbc:oracle:thin:@localhost:1521:xe",
-						"C##jmk",
+						"jdbc:mysql://localhost:3306/risecake_db",
+						"minkook",
 						"1234")){
-			System.out.println(con);
+			System.out.println("MySQL ì—°ê²° ì„±ê³µ");
 		} catch (Exception e) {
 			fail(e.getMessage());
 		}
-		
+
 	}
 
 }

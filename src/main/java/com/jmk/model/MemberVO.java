@@ -1,5 +1,7 @@
 package com.jmk.model;
 
+import java.sql.Timestamp;
+
 public class MemberVO {
 	
 	//회원 id
@@ -27,7 +29,7 @@ public class MemberVO {
 	private int adminCk;
 	
 	//등록일자
-	private int regDate;
+	private Timestamp regDate;
 	
 	//회원 돈
 	private int money;
@@ -99,11 +101,11 @@ public class MemberVO {
 		this.adminCk = adminCk;
 	}
 
-	public int getRegDate() {
+	public Timestamp getRegDate() {
 		return regDate;
 	}
 
-	public void setRegDate(int regDate) {
+	public void setRegDate(Timestamp regDate) {
 		this.regDate = regDate;
 	}
 

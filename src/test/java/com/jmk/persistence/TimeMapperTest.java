@@ -19,6 +19,4 @@ public class TimeMapperTest  {
 	public void testGetTime() {
 		System.out.println(timeMapper.getTime());
 	}
-	
-	
 }

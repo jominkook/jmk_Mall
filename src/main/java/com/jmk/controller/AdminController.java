@@ -10,12 +10,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/admin")
 public class AdminController {
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
-	
-	/* 관리자 메인 페이지 이동 */
-    @RequestMapping(value="main", method = RequestMethod.GET)
-    public void adminMainGET() throws Exception{
-        
+
+    /* 관리자 메인 페이지 이동 */
+    @RequestMapping(value = "/main", method = RequestMethod.GET)
+    public String adminMainGET() {
         logger.info("관리자 페이지 이동");
-        
+        return "admin/main"; // 뷰 이름 반환
     }
 }
