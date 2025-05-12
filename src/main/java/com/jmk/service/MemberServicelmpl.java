@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jmk.mapper.MemberMapper;
-import com.jmk.model.MemberVO;
+import com.jmk.model.Member;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
@@ -15,7 +15,7 @@ public class MemberServicelmpl implements MemberService {
 
 	@Transactional
 	@Override
-	public void memberJoin(MemberVO member) throws Exception {
+	public void memberJoin(Member member) throws Exception {
 		
 		membermapper.memberJoin(member);
 	}
@@ -30,8 +30,7 @@ public class MemberServicelmpl implements MemberService {
     /* 로그인 */
 	@Transactional
     @Override
-    public MemberVO memberLogin(MemberVO member) throws Exception {
-        
+    public Member memberLogin(Member member) throws Exception {
         return membermapper.memberLogin(member);
     }
  }

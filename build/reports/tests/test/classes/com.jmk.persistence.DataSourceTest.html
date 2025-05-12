@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.025s</div>
+<div class="counter">0.020s</div>
 <p>duration</p>
 </div>
 </td>
@@ -79,7 +79,7 @@
 </thead>
 <tr>
 <td class="success">testConnection</td>
-<td class="success">0.025s</td>
+<td class="success">0.020s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -87,61 +87,64 @@
 <div class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>2025-05-08 13:09:01 [Test worker] DEBUG o.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
-2025-05-08 13:09:01 [Test worker] DEBUG o.m.s.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\whaks\Documents\workspace\jmk_Mall\build\classes\java\main\com\jmk\mapper\MemberMapper.class]
-2025-05-08 13:09:01 [Test worker] DEBUG o.m.s.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\whaks\Documents\workspace\jmk_Mall\build\classes\java\main\com\jmk\mapper\TimeMapper.class]
-2025-05-08 13:09:01 [Test worker] DEBUG o.m.s.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'memberMapper' and 'com.jmk.mapper.MemberMapper' mapperInterface
-2025-05-08 13:09:01 [Test worker] DEBUG o.m.s.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'memberMapper'.
-2025-05-08 13:09:01 [Test worker] DEBUG o.m.s.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'timeMapper' and 'com.jmk.mapper.TimeMapper' mapperInterface
-2025-05-08 13:09:01 [Test worker] DEBUG o.m.s.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'timeMapper'.
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - Driver class com.mysql.cj.jdbc.Driver found in Thread context class loader jdk.internal.loader.ClassLoaders$AppClassLoader@7852e922
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - HikariPool-1 - configuration:
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - allowPoolSuspension.............false
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - autoCommit......................true
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - catalog.........................none
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - connectionInitSql...............none
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - connectionTestQuery.............none
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - connectionTimeout...............30000
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - dataSource......................none
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - dataSourceClassName.............none
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - dataSourceJNDI..................none
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - dataSourceProperties............{password=&lt;masked&gt;}
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - driverClassName.................&quot;com.mysql.cj.jdbc.Driver&quot;
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - exceptionOverrideClassName......none
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - healthCheckProperties...........{}
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - healthCheckRegistry.............none
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - idleTimeout.....................600000
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - initializationFailTimeout.......1
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - isolateInternalQueries..........false
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - jdbcUrl.........................jdbc:mysql://localhost:3306/risecake_db?useSSL=false&amp;serverTimezone=UTC
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - keepaliveTime...................0
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - leakDetectionThreshold..........0
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - maxLifetime.....................1800000
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - maximumPoolSize.................10
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - metricRegistry..................none
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - metricsTrackerFactory...........none
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - minimumIdle.....................10
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - password........................&lt;masked&gt;
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - poolName........................&quot;HikariPool-1&quot;
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - readOnly........................false
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - registerMbeans..................false
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - scheduledExecutor...............none
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - schema..........................none
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - threadFactory...................internal
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - transactionIsolation............default
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - username........................&quot;minkook&quot;
-2025-05-08 13:09:01 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - validationTimeout...............5000
-2025-05-08 13:09:01 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2025-05-08 13:09:02 [Test worker] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4349754
-2025-05-08 13:09:02 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2025-05-08 13:09:02 [Test worker] DEBUG o.m.spring.SqlSessionFactoryBean - Property 'configuration' or 'configLocation' not specified, using default MyBatis Configuration
-2025-05-08 13:09:02 [Test worker] DEBUG o.m.spring.SqlSessionFactoryBean - Property 'mapperLocations' was not specified.
-2025-05-08 13:09:02 [HikariPool-1 housekeeper] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=1, active=0, idle=1, waiting=0)
-2025-05-08 13:09:02 [HikariPool-1 connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6ed198ea
-2025-05-08 13:09:02 [HikariPool-1 connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2fec92d1
-2025-05-08 13:09:02 [HikariPool-1 connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1e09beb3
-con=HikariProxyConnection@1431099210 wrapping com.mysql.cj.jdbc.ConnectionImpl@4349754
-2025-05-08 13:09:02 [HikariPool-1 connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4fc36d9e
+<pre>2025-05-12 23:55:07 [Test worker] DEBUG o.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2025-05-12 23:55:07 [Test worker] DEBUG o.m.s.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\whaks\Documents\workspace\jmk_Mall\build\classes\java\main\com\jmk\mapper\MemberMapper.class]
+2025-05-12 23:55:07 [Test worker] DEBUG o.m.s.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\whaks\Documents\workspace\jmk_Mall\build\classes\java\main\com\jmk\mapper\TimeMapper.class]
+2025-05-12 23:55:07 [Test worker] DEBUG o.m.s.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'memberMapper' and 'com.jmk.mapper.MemberMapper' mapperInterface
+2025-05-12 23:55:07 [Test worker] DEBUG o.m.s.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'memberMapper'.
+2025-05-12 23:55:07 [Test worker] DEBUG o.m.s.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'timeMapper' and 'com.jmk.mapper.TimeMapper' mapperInterface
+2025-05-12 23:55:07 [Test worker] DEBUG o.m.s.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'timeMapper'.
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - Driver class com.mysql.cj.jdbc.Driver found in Thread context class loader jdk.internal.loader.ClassLoaders$AppClassLoader@7852e922
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - HikariPool-1 - configuration:
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - allowPoolSuspension.............false
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - autoCommit......................true
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - catalog.........................none
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - connectionInitSql...............none
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - connectionTestQuery.............none
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - connectionTimeout...............30000
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - dataSource......................none
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - dataSourceClassName.............none
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - dataSourceJNDI..................none
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - dataSourceProperties............{password=&lt;masked&gt;}
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - driverClassName.................&quot;com.mysql.cj.jdbc.Driver&quot;
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - exceptionOverrideClassName......none
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - healthCheckProperties...........{}
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - healthCheckRegistry.............none
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - idleTimeout.....................30000
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - initializationFailTimeout.......1
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - isolateInternalQueries..........false
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - jdbcUrl.........................jdbc:mysql://localhost:3306/risecake_db?useSSL=false&amp;serverTimezone=UTC
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - keepaliveTime...................0
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - leakDetectionThreshold..........0
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - maxLifetime.....................1800000
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - maximumPoolSize.................10
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - metricRegistry..................none
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - metricsTrackerFactory...........none
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - minimumIdle.....................5
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - password........................&lt;masked&gt;
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - poolName........................&quot;HikariPool-1&quot;
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - readOnly........................false
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - registerMbeans..................false
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - scheduledExecutor...............none
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - schema..........................none
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - threadFactory...................internal
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - transactionIsolation............default
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - username........................&quot;minkook&quot;
+2025-05-12 23:55:07 [Test worker] DEBUG com.zaxxer.hikari.HikariConfig - validationTimeout...............5000
+2025-05-12 23:55:07 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-05-12 23:55:07 [Test worker] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3c6aa04a
+2025-05-12 23:55:07 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+Logging initialized using 'class org.apache.ibatis.logging.stdout.StdOutImpl' adapter.
+2025-05-12 23:55:07 [HikariPool-1 housekeeper] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Before cleanup stats (total=1, active=0, idle=1, waiting=0)
+2025-05-12 23:55:07 [HikariPool-1 housekeeper] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - After cleanup  stats (total=1, active=0, idle=1, waiting=0)
+2025-05-12 23:55:07 [HikariPool-1 connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@d58aa99
+2025-05-12 23:55:07 [HikariPool-1 connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4c65a0a2
+2025-05-12 23:55:07 [Test worker] DEBUG o.m.spring.SqlSessionFactoryBean - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+2025-05-12 23:55:07 [HikariPool-1 connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7de36e7f
+2025-05-12 23:55:07 [Test worker] DEBUG o.m.spring.SqlSessionFactoryBean - Property 'mapperLocations' was not specified.
+2025-05-12 23:55:08 [HikariPool-1 connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2c4a5fed
+2025-05-12 23:55:08 [HikariPool-1 connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - After adding stats (total=5, active=0, idle=5, waiting=0)
+con=HikariProxyConnection@1537371824 wrapping com.mysql.cj.jdbc.ConnectionImpl@3c6aa04a
 </pre>
 </span>
 </div>
@@ -153,7 +156,7 @@ con=HikariProxyConnection@1431099210 wrapping com.mysql.cj.jdbc.ConnectionImpl@4
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="https://www.gradle.org">Gradle 8.14</a> at 2025. 5. 8. 오후 1:09:02</p>
+<a href="https://www.gradle.org">Gradle 8.14</a> at 2025. 5. 12. 오후 11:55:08</p>
 </div>
 </div>
 </body>

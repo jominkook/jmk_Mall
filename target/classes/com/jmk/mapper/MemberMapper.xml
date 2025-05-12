@@ -15,7 +15,7 @@
   		</select>
   		
   		 <!-- 로그인 -->
-      	<select id="memberLogin" resultType="com.jmk.model.MemberVO">
+      	<select id="memberLogin" resultType="com.jmk.model.Member">
       
         select memberId, memberPw, memberName, adminCk, money, point from cloth_member where memberId = #{memberId}
           <!-- 기존코드 -->
