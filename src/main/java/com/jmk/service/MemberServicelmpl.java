@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class MemberServicelmpl implements MemberService {
 	
 	@Autowired
-	MemberMapper membermapper;
+	private MemberMapper membermapper;
 
 	@Transactional
 	@Override

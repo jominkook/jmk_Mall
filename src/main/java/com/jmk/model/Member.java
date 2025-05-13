@@ -1,5 +1,7 @@
 package com.jmk.model;
 
+
+
 import lombok.*;
 
 import java.sql.Timestamp;
@@ -7,8 +9,9 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Member {
-	
 	//회원 id
 	private String memberId;
 	
