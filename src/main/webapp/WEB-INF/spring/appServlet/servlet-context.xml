@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xmlns:context="http://www.springframework.org/schema/context"
@@ -11,9 +10,11 @@
 	<!-- Component Scan -->
 	<context:component-scan base-package="com.jmk.controller" />
 
-	<!-- Spring MVC 설정 -->
+	<!-- MVC Annotation Driven -->
 	<mvc:annotation-driven />
 
+	<!-- 정적 리소스 매핑 -->
+	<mvc:resources mapping="/upload/**" location="file:///C:/upload/" />
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
 	<!-- View Resolver -->
@@ -21,4 +22,5 @@
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+
 </beans>

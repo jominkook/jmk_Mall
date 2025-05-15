@@ -1,6 +1,6 @@
 package com.jmk.mapper;
 
-import com.jmk.model.Member;
+import com.jmk.vo.member.Member;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

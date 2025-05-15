@@ -27,6 +27,12 @@
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
+
+		<multipart-config>
+			<max-file-size>10485760</max-file-size> <!-- 10MB -->
+			<max-request-size>20971520</max-request-size> <!-- 20MB -->
+			<file-size-threshold>0</file-size-threshold>
+		</multipart-config>
 	</servlet>
 
 	<servlet-mapping>
@@ -51,5 +57,7 @@
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+
+
 
 </web-app>

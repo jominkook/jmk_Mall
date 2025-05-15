@@ -18,10 +18,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+
+	//메인 페이지 이동
+	@RequestMapping(value = "/main", method = RequestMethod.GET)
+	public void mainPageGET() {
+
+		logger.info("메인 페이지 삽입");
+	}
 	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("HomeController: home() 호출됨");
@@ -31,10 +35,10 @@ public class HomeController {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
 		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "home";
+
+		model.addAttribute("contentPage", "home.jsp");
+
+		return "main";
 	}
 	
 }
