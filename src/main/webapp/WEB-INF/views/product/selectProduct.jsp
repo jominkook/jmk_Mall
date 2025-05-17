@@ -103,6 +103,7 @@
                                 <div class="product-material">재료: ${product.productIngredient}</div>
                                 <div class="product-stock">수량: ${product.stockQuantity}</div>
 
+
                                 <div class="mt-2 d-flex gap-2">
                                     <c:if test="${member != null && member.adminCk == 1}">
                                         <form action="${pageContext.request.contextPath}/admin/productUpdate" method="get" style="flex:1; margin:0;">
@@ -110,6 +111,26 @@
                                             <button type="submit" class="btn btn-sm btn-outline-primary w-100 update-btn">수정</button>
                                         </form>
                                         <button type="button" class="btn btn-sm btn-outline-danger w-100 delete-btn" data-product-id="${product.productId}" style="flex:1;">삭제</button>
+                                    </c:if>
+                                    <c:if test="${member != null && member.adminCk != 1}">
+                                        <form action="${pageContext.request.contextPath}/member/cart/add" method="post" style="display:inline;">
+                                            <input type="hidden" name="productId" value="${product.productId}" />
+                                            <input type="hidden" name="cartQuantity" value="1" />
+                                            <button type="submit"
+                                                    class="btn btn-xs btn-success px-2 py-1"
+                                                    style="font-size:0.85em; min-width:60px;">
+                                                <i class="bi bi-cart-plus"></i> 장바구니
+                                            </button>
+                                        </form>
+                                        <form action="${pageContext.request.contextPath}/order/add" method="post" style="display:inline;">
+                                            <input type="hidden" name="productId" value="${product.productId}" />
+                                            <input type="hidden" name="orderQuantity" value="1" />
+                                            <button type="submit"
+                                                    class="btn btn-xs btn-primary px-2 py-1"
+                                                    style="font-size:0.85em; min-width:60px;">
+                                                <i class="bi bi-bag-check"></i> 주문하기
+                                            </button>
+                                        </form>
                                     </c:if>
                                 </div>
 
@@ -142,6 +163,35 @@
                     alert("삭제 중 오류가 발생했습니다.");
                 });
             }
+        });
+    });
+
+
+    $(document).ready(function(){
+        $(".add-cart-btn").click(function(){
+            var productId = $(this).data("product-id");
+            var cartQuantity = $(this).data("cart-quantity");
+
+            console.log(productId);
+            console.log(cartQuantity);
+            console.log(member.memberId);
+
+            $.post("${pageContext.request.contextPath}/member/cart/add", {
+                productId: productId,
+                cartQuantity: cartQuantity
+            }, function(response){
+                if(response === "success") {
+                    alert("장바구니에 담겼습니다!");
+                    $("#cart-count-badge").text(response.cartCount);
+                } else if(response === "not_logged_in") {
+                    alert("로그인 후 이용해 주세요.");
+                    location.href = "${pageContext.request.contextPath}/login";
+                } else {
+                    alert("장바구니 담기 실패!");
+                }
+            }).fail(function(){
+                alert("장바구니 담기 실패!");
+            });
         });
     });
 </script>

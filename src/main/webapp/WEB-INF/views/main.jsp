@@ -84,9 +84,16 @@
                         <i class="bi bi-heart"></i>
                         <span class="action-text d-none d-md-inline-block">Wishlist</span>
                     </a>
-                    <a href="${pageContext.request.contextPath}/cart" class="header-action-btn d-none d-md-flex">
-                        <i class="bi bi-cart3"></i>
-                        <span class="action-text d-none d-md-inline-block">장바구니</span>
+                    <a href="${pageContext.request.contextPath}/member/cart/list" class="position-relative" style="display:inline-block;">
+                        <i class="bi bi-cart" style="font-size:1.7em; color:#222;"></i>
+                        <c:if test="${cartCount > 0}">
+                            <span id="cart-count-badge"
+                                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                  style="font-size:0.85em; min-width:22px; min-height:22px; display:flex; align-items:center; justify-content:center;">
+                                    ${cartCount}
+                                장바구니
+                            </span>
+                        </c:if>
                     </a>
                 </div>
             </div>
@@ -144,8 +151,9 @@
                 alert("로그아웃 성공");
                 document.location.reload();
             }
-        }); // ajax
+        });
     });
+
 
 </script>
 </body>
