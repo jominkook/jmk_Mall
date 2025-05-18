@@ -64,13 +64,28 @@
                         <c:when test="${member != null}">
                             <div class="d-flex align-items-center ms-3" style="gap:8px;">
                                   <span class="fw-semibold">
-                                    <i class="bi bi-person-circle me-1"></i>${member.memberName}
+                                    <i class="bi bi-person-circle me-1"></i>${member.memberId}
                                   </span>
-                                                            <span class="text-success fw-semibold">
+                                  <span class="text-success fw-semibold">
                                     <i class="bi bi-currency-dollar"></i>
                                     <fmt:formatNumber value="${member.money}" pattern="#,###"/>원
                                   </span>
-                                  <a href="/member/logout.do">로그아웃</a>
+                                  <!-- a href="${pageContext.request.contextPath}/wishlist" class="header-action-btn d-none d-md-flex">
+                                      <i class="bi bi-heart"></i>
+                                      <span class="action-text d-none d-md-inline-block">Wishlist</span>
+                                  </a-->
+                                  <a href="${pageContext.request.contextPath}/member/cart/list" class="position-relative" style="display:inline-block;">
+                                      <i class="bi bi-cart" style="font-size:1.7em; color:#222;"></i>
+                                        <c:if test="${cartCount > 0}">
+                                            <span id="cart-count-badge"
+                                                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                                  style="font-size:0.85em; min-width:22px; min-height:22px; display:flex; align-items:center; justify-content:center;">
+                                                    ${cartCount}
+                                            </span>
+                                            장바구니
+                                        </c:if>
+                                 </a>
+                                 <a href="/member/logout.do">로그아웃</a>
                             </div>
                         </c:when>
                         <c:otherwise>
@@ -80,21 +95,6 @@
                             </div>
                         </c:otherwise>
                     </c:choose>
-                    <a href="${pageContext.request.contextPath}/wishlist" class="header-action-btn d-none d-md-flex">
-                        <i class="bi bi-heart"></i>
-                        <span class="action-text d-none d-md-inline-block">Wishlist</span>
-                    </a>
-                    <a href="${pageContext.request.contextPath}/member/cart/list" class="position-relative" style="display:inline-block;">
-                        <i class="bi bi-cart" style="font-size:1.7em; color:#222;"></i>
-                        <c:if test="${cartCount > 0}">
-                            <span id="cart-count-badge"
-                                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                                  style="font-size:0.85em; min-width:22px; min-height:22px; display:flex; align-items:center; justify-content:center;">
-                                    ${cartCount}
-                                장바구니
-                            </span>
-                        </c:if>
-                    </a>
                 </div>
             </div>
         </div>

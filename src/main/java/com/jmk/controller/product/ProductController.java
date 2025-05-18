@@ -62,7 +62,7 @@ public class ProductController {
         product.setProductImage(imageUrl);
         productService.insertProduct(product);
         model.addAttribute("contentPage", "product/selectProduct.jsp");
-        return "redirect:/main";
+        return "main";
     }
 
     @RequestMapping(value = "/productSelect", method = RequestMethod.GET)
@@ -110,7 +110,6 @@ public class ProductController {
         model.addAttribute("product", product);
         model.addAttribute("categoryList", categoryList);
         model.addAttribute("contentPage", "product/productUpdate.jsp");
-        // 카테고리 리스트 등도 필요하면 추가
         return "main";
     }
 
@@ -122,7 +121,6 @@ public class ProductController {
             HttpSession session,
             Model model
     ) throws Exception {
-        // 이미지 변경 시 파일 업로드 처리
 
         System.out.println("수정 productId: " + product.getProductId());
         if (uploadFile != null && !uploadFile.isEmpty()) {
@@ -136,15 +134,14 @@ public class ProductController {
 
             product.setProductImage("/upload/" + fileName);
         }
-        // 이미지 변경 없으면 기존 이미지 유지
         productService.updateProduct(product);
-        return "redirect:/main";
+        return "redirect:/productSelect";
     }
 
 
     @RequestMapping(value = "/admin/productDelete" ,method = RequestMethod.POST)
     public String productDelete(@RequestParam("productId") int productId) throws Exception {
         productService.deleteProduct(productId);
-        return "redirect:/main";
+        return "redirect:/productSelect";
     }
 }

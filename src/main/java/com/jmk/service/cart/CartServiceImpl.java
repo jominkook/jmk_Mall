@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 @Service
@@ -29,5 +30,17 @@ public class CartServiceImpl implements CartService {
     @Override
     public int getCartCount(String memberId) throws Exception {
         return cartMapper.getCartCount(memberId);
+    }
+
+    @Transactional
+    @Override
+    public List<Cart> getCartList(String memberId) throws Exception {
+        return cartMapper.getCartList(memberId);
+    }
+
+    @Transactional
+    @Override
+    public void deleteProduct(int cartId) throws Exception {
+        cartMapper.deleteProduct(cartId);
     }
 }

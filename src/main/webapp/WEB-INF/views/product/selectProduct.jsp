@@ -119,7 +119,7 @@
                                             <button type="submit"
                                                     class="btn btn-xs btn-success px-2 py-1"
                                                     style="font-size:0.85em; min-width:60px;">
-                                                <i class="bi bi-cart-plus"></i> 장바구니
+                                                <i class="bi bi-cart-plus"></i> 장바구니 담기
                                             </button>
                                         </form>
                                         <form action="${pageContext.request.contextPath}/order/add" method="post" style="display:inline;">
@@ -128,7 +128,7 @@
                                             <button type="submit"
                                                     class="btn btn-xs btn-primary px-2 py-1"
                                                     style="font-size:0.85em; min-width:60px;">
-                                                <i class="bi bi-bag-check"></i> 주문하기
+                                                <i class="bi bi-bag-check"></i> 주문
                                             </button>
                                         </form>
                                     </c:if>
