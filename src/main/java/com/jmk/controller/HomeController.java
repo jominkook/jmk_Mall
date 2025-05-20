@@ -19,17 +19,16 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-	//메인 페이지 이동
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public void mainPageGET() {
 
-		logger.info("메인 페이지 삽입");
+		//logger.info("메인 페이지 삽입");
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		logger.info("HomeController: home() 호출됨");
-		logger.info("Welcome home! The client locale is {}.", locale);
+		//logger.info("HomeController: home() 호출됨");
+		//logger.info("Welcome home! The client locale is {}.", locale);
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);

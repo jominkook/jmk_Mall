@@ -28,7 +28,7 @@ public class ProductController {
     @Autowired
     CategoryService categoryService;
 
-    // 상품 등록 폼 (GET)
+
     @RequestMapping(value = "/admin/productRegister", method = RequestMethod.GET)
     public String productRegister(HttpSession session, Model model) throws Exception {
         List<Category> categoryList = categoryService.getAllCategories();
@@ -98,7 +98,7 @@ public class ProductController {
         return "main";
     }
 
-    // 수정 폼 이동
+
     @RequestMapping(value = "/admin/productUpdate", method = RequestMethod.GET)
     public String productUpdate(@RequestParam("productId") int productId, Model model) throws Exception {
         System.out.println("productId" + productId);
@@ -113,7 +113,7 @@ public class ProductController {
         return "main";
     }
 
-    // 수정 처리
+
     @RequestMapping(value = "/admin/productUpdate" ,method = RequestMethod.POST)
     public String productUpdatePost(
             @ModelAttribute Product product,
@@ -122,7 +122,7 @@ public class ProductController {
             Model model
     ) throws Exception {
 
-        System.out.println("수정 productId: " + product.getProductId());
+        //System.out.println("수정 productId: " + product.getProductId());
         if (uploadFile != null && !uploadFile.isEmpty()) {
             String uploadDir = "C:/upload/";
             File dir = new File(uploadDir);

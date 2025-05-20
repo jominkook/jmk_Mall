@@ -24,3 +24,5 @@ hs_err_pid*
 
 # config
 *.xml
+
+/src/main/resources/application.properties

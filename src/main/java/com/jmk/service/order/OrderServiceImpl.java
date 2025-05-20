@@ -74,10 +74,10 @@ public class OrderServiceImpl implements OrderService {
             }
 
             try {
-                System.out.println("상품 재고 업데이트 성공");
+                //System.out.println("상품 재고 업데이트 성공");
                 productMapper.updateProductStock(productId, quantity);
             } catch (Exception e) {
-                System.out.println("상품 재고 업데이트 실패");
+                //System.out.println("상품 재고 업데이트 실패");
                 throw e;
             }
 
@@ -102,9 +102,9 @@ public class OrderServiceImpl implements OrderService {
                 int quantity = cart.getCartQuantity();
                 totalPrice += price * quantity;
             }
-            System.out.println("총 결제금액 계산 성공: " + totalPrice);
+            //System.out.println("총 결제금액 계산 성공: " + totalPrice);
         } catch (Exception e) {
-            System.out.println("총 결제금액 계산 실패: " + e.getMessage());
+            //System.out.println("총 결제금액 계산 실패: " + e.getMessage());
             throw e;
         }
 
@@ -115,9 +115,9 @@ public class OrderServiceImpl implements OrderService {
             order.setOrderTotalPrice(totalPrice);
             orderMapper.insertOrder(order);
             memberOrderId = order.getMemberOrderId();
-            System.out.println("주문 저장 성공: " + memberOrderId);
+            //System.out.println("주문 저장 성공: " + memberOrderId);
         } catch (Exception e) {
-            System.out.println("주문 저장 실패: " + e.getMessage());
+           // System.out.println("주문 저장 실패: " + e.getMessage());
             throw e;
         }
 
@@ -137,9 +137,9 @@ public class OrderServiceImpl implements OrderService {
                 productMapper.updateProductStock(cart.getProductId(), cart.getCartQuantity());
                 cartMapper.deleteProduct(cart.getCartId());
             }
-            System.out.println("주문상세/재고 차감 성공");
+            //System.out.println("주문상세/재고 차감 성공");
         } catch (Exception e) {
-            System.out.println("주문상세/재고 차감 실패: " + e.getMessage());
+            //System.out.println("주문상세/재고 차감 실패: " + e.getMessage());
             throw e;
         }
 
@@ -152,9 +152,9 @@ public class OrderServiceImpl implements OrderService {
             payment.setPaymentAmount(totalPrice);
             payment.setImpUid(impUid);
             paymentMapper.insertPayment(payment);
-            System.out.println("결제 저장 성공");
+            //System.out.println("결제 저장 성공");
         } catch (Exception e) {
-            System.out.println("결제 저장 실패: " + e.getMessage());
+            //System.out.println("결제 저장 실패: " + e.getMessage());
             throw e;
         }
 

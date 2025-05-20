@@ -4,20 +4,16 @@ import com.jmk.dto.cart.CartDto;
 import com.jmk.service.cart.CartService;
 import com.jmk.service.order.OrderService;
 import com.jmk.service.payment.PaymentService;
-import com.jmk.vo.cart.Cart;
+import com.jmk.service.payment.PaymentServiceImpl;
 import com.jmk.vo.member.Member;
-import com.jmk.vo.product.Product;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.util.List;
 
 @Controller
@@ -47,7 +43,7 @@ public class CartController {
 
         cartService.addCartItem(member.getMemberId(), productId, cartQuantity);
         
-        //장바구니 세션 유지 -> 하드코딩
+        //장바구니 세션 유지 -> 하드코딩X
         /*if (member != null) {
             int cartCount = cartService.getCartCount(member.getMemberId());
             model.addAttribute("cartCount", cartCount);

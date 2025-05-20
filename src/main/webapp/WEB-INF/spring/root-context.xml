@@ -12,15 +12,15 @@
 
 	<!-- HikariCP 설정 -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
-		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/risecake_db?useSSL=false&amp;serverTimezone=UTC" />
-		<property name="username" value="minkook" />
-		<property name="password" value="1234" />
-		<property name="maximumPoolSize" value="10" />
-		<property name="minimumIdle" value="5" />
-		<property name="idleTimeout" value="30000" />
-		<property name="connectionTimeout" value="30000" />
-		<property name="maxLifetime" value="1800000" />
+		<property name="driverClassName" value="${db.driverClassName}" />
+		<property name="jdbcUrl" value="${db.url}" />
+		<property name="username" value="${db.username}" />
+		<property name="password" value="${db.password}" />
+		<property name="maximumPoolSize" value="${db.maximumPoolSize}" />
+		<property name="minimumIdle" value="${db.minimumIdle}" />
+		<property name="idleTimeout" value="${db.idleTimeout}" />
+		<property name="connectionTimeout" value="${db.connectionTimeout}" />
+		<property name="maxLifetime" value="${db.maxLifetime}" />
 	</bean>
 
 	<!-- MyBatis Mapper 스캔 -->
@@ -47,19 +47,21 @@
 
 	<!-- JavaMailSender 설정 -->
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<property name="host" value="smtp.gmail.com" />
-		<property name="port" value="587" />
-		<property name="username" value="whalsrnraos@gmail.com" />
-		<property name="password" value="your-app-password" />
+		<property name="host" value="${mail.host}" />
+		<property name="port" value="${mail.port}" />
+		<property name="username" value="${mail.username}" />
+		<property name="password" value="${mail.password}" />
 		<property name="javaMailProperties">
 			<props>
 				<prop key="mail.smtp.auth">true</prop>
-				<prop key="mail.smtp.starttls.enable">true</prop>
-				<prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
+				<prop key="mail.smtp.ssl.enable">true</prop>
+				<prop key="mail.smtp.ssl.trust">smtp.naver.com</prop>
 			</props>
 		</property>
 	</bean>
 
 	<!-- Component Scan -->
 	<context:component-scan base-package="com.jmk.service, com.jmk.mapper, com.jmk.vo" />
+
+	<context:property-placeholder location="classpath:application.properties"/>
 </beans>

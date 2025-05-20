@@ -176,8 +176,8 @@ public class MemberController {
 			rawPw = member.getMemberPw(); // 사용자가 입력한 비밀번호
 			encodePw = lvo.getMemberPw(); // 데이터베이스에서 가져온 암호화된 비밀번호
 
-			logger.info("rawPw: " + rawPw);
-			logger.info("encodePw: " + encodePw);
+			//logger.info("rawPw: " + rawPw);
+			//logger.info("encodePw: " + encodePw);
 
 			if (encodePw != null && pwEncoder.matches(rawPw, encodePw)) {
 				lvo.setMemberPw(""); // 비밀번호 정보 제거
@@ -197,7 +197,7 @@ public class MemberController {
     @RequestMapping(value="logout.do", method=RequestMethod.GET)
     public String logoutMainGET(HttpServletRequest request) throws Exception{
     	 
-    	logger.info("logoutMainGET메서드 진입");
+    	//logger.info("logoutMainGET메서드 진입");
          
          HttpSession session = request.getSession();
          

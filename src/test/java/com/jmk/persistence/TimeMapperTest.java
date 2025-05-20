@@ -10,7 +10,8 @@ import com.jmk.mapper.TimeMapper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
-public class TimeMapperTest  {
+public class
+TimeMapperTest  {
 
 	@Autowired
 	private TimeMapper timeMapper;
