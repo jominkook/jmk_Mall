@@ -9,6 +9,7 @@ import lombok.*;
 @ToString
 public class CartDto {
     private int cartId;
+    private int productId;
     private String productImage;
     private String productName;
     private int productPrice;

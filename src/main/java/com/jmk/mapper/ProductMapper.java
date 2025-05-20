@@ -18,6 +18,9 @@ public interface ProductMapper {
 
     public void deleteProduct(int productId);
 
+    //상품재고 차감
+    public void updateProductStock(@Param("productId") int productId, @Param("quantity") int quantity);
+
     //페이징 처리
 
     public int countProduct();

@@ -1,6 +1,9 @@
 package com.jmk.controller.cart;
 
+import com.jmk.dto.cart.CartDto;
 import com.jmk.service.cart.CartService;
+import com.jmk.service.order.OrderService;
+import com.jmk.service.payment.PaymentService;
 import com.jmk.vo.cart.Cart;
 import com.jmk.vo.member.Member;
 import com.jmk.vo.product.Product;
@@ -21,6 +24,12 @@ import java.util.List;
 public class CartController {
     @Autowired
     private CartService cartService;
+
+    @Autowired
+    private OrderService orderService;
+
+    @Autowired
+    private PaymentService paymentService;
 
     @RequestMapping(value = "member/cart/add" , method = RequestMethod.POST)
     public String addCartItem(
@@ -55,7 +64,7 @@ public class CartController {
         if (member == null) {
             return "redirect:/login"; // 로그인 안 했으면 로그인 페이지로
         }
-        List<Cart> cartList = cartService.getCartList(member.getMemberId());
+        List<CartDto> cartList = cartService.getCartList(member.getMemberId());
         model.addAttribute("cartList", cartList);
         model.addAttribute("contentPage", "cart/cartList.jsp");
         return "main";
@@ -65,5 +74,42 @@ public class CartController {
     public String cartDelete(@RequestParam("cartId") int cartId) throws Exception {
         cartService.deleteProduct(cartId);
         return "redirect:/member/cart/list";
+    }
+
+    @RequestMapping(value = "/member/order/cart", method = RequestMethod.GET)
+    public String showCartOrderPage(HttpSession session, Model model) throws Exception {
+        Member member = (Member) session.getAttribute("member");
+        if (member == null) return "redirect:/member/login";
+        List<CartDto> cartList = cartService.getCartList(member.getMemberId());
+        model.addAttribute("cartList", cartList);
+        model.addAttribute("contentPage", "order/productOrder.jsp");
+        return "main";
+    }
+
+    @RequestMapping(value = "/member/order/cart", method = RequestMethod.POST)
+    public String orderFromCart(
+            HttpSession session,
+            @RequestParam String imp_uid,
+            @RequestParam String paymentMethod,
+            Model model) throws Exception {
+
+        Member member = (Member) session.getAttribute("member");
+        if (member == null) return "redirect:/member/login";
+        List<CartDto> cartList = cartService.getCartList(member.getMemberId());
+
+        // 1. 아임포트 REST API로 결제 검증 (금액, 결제상태 등)
+        boolean isValid = paymentService.verifyPayment(imp_uid);
+
+        if (!isValid) {
+            model.addAttribute("msg", "결제 검증에 실패했습니다.");
+            model.addAttribute("contentPage", "order/orderFailed.jsp");
+            return "main";
+        }
+
+        int orderId = orderService.saveCartOrderAndPayment(member.getMemberId(), cartList, paymentMethod, imp_uid);
+
+        model.addAttribute("orderId", orderId);
+        model.addAttribute("contentPage", "order/orderSuccess.jsp");
+        return "main";
     }
 }

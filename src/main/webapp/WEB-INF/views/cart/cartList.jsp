@@ -38,8 +38,8 @@
                         </tr>
                         </thead>
                         <tbody>
+                        <c:set var="totalPrice" value="0" />
                         <c:forEach var="cart" items="${cartList}">
-                            <c:set var="totalPrice" value="${totalPrice + (cart.productPrice * cart.cartQuantity)}" />
                             <tr>
                                 <td>
                                     <img src="${pageContext.request.contextPath}${cart.productImage}" alt="${cart.productName}" class="cart-img"/>
@@ -57,6 +57,7 @@
                                     </form>
                                 </td>
                             </tr>
+                        <c:set var="totalPrice" value="${totalPrice + (cart.productPrice * cart.cartQuantity)}" />
                         </c:forEach>
                         <c:if test="${empty cartList}">
                             <tr>
@@ -85,8 +86,8 @@
                             </div>
                         </div>
                     </div>
-                    <form action="${pageContext.request.contextPath}/order/add" method="post">
-                        <button type="submit" class="btn btn-primary btn-lg w-100" style="font-size:1.2em;">
+                    <form id="cartOrderForm" action="${pageContext.request.contextPath}/member/order/cart" method="get">
+                        <button type="submit" class="btn btn-primary btn-lg w-100" style="font-size:1.2em">
                             주문하기
                         </button>
                     </form>

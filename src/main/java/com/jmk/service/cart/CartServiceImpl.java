@@ -1,12 +1,22 @@
 package com.jmk.service.cart;
 
+import com.jmk.dto.cart.CartDto;
+import com.jmk.dto.order.OrderDto;
+import com.jmk.dto.order.OrderProductDto;
+import com.jmk.dto.payment.Payment;
 import com.jmk.mapper.CartMapper;
+import com.jmk.mapper.OrderMapper;
+import com.jmk.mapper.PaymentMapper;
+import com.jmk.mapper.ProductMapper;
 import com.jmk.vo.cart.Cart;
+import com.jmk.vo.product.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 @Service
@@ -32,11 +42,11 @@ public class CartServiceImpl implements CartService {
         return cartMapper.getCartCount(memberId);
     }
 
-    @Transactional
     @Override
-    public List<Cart> getCartList(String memberId) throws Exception {
+    public List<CartDto> getCartList(String memberId) throws Exception {
         return cartMapper.getCartList(memberId);
     }
+
 
     @Transactional
     @Override

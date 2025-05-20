@@ -65,6 +65,9 @@ dependencies {
     // AspectJ
     implementation 'org.aspectj:aspectjrt:1.9.19'
 
+    //결제관련
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.5'
+
     // Testing
     testImplementation 'junit:junit:4.13.2'
 }

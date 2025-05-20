@@ -1,9 +1,6 @@
 package com.jmk.service.cart;
 
-import com.jmk.mapper.CartMapper;
-import com.jmk.vo.cart.Cart;
-import org.apache.ibatis.annotations.Param;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.jmk.dto.cart.CartDto;
 
 import java.util.List;
 
@@ -13,7 +10,7 @@ public interface CartService {
 
     public int getCartCount(String memberId) throws Exception;
 
-    public List<Cart> getCartList(String memberId) throws Exception;
+    public List<CartDto> getCartList(String memberId) throws Exception;
 
     public void deleteProduct(int cartId) throws Exception;
 

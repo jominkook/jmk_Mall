@@ -122,14 +122,13 @@
                                                 <i class="bi bi-cart-plus"></i> 장바구니 담기
                                             </button>
                                         </form>
-                                        <form action="${pageContext.request.contextPath}/order/add" method="post" style="display:inline;">
-                                            <input type="hidden" name="productId" value="${product.productId}" />
-                                            <input type="hidden" name="orderQuantity" value="1" />
-                                            <button type="submit"
-                                                    class="btn btn-xs btn-primary px-2 py-1"
-                                                    style="font-size:0.85em; min-width:60px;">
-                                                <i class="bi bi-bag-check"></i> 주문
-                                            </button>
+<%--                                        <form action="${pageContext.request.contextPath}/member/order/cart" method="get">--%>
+<%--                                            <button type="submit" class="btn btn-primary">주문하기</button>--%>
+<%--                                        </form>--%>
+                                        <form action="${pageContext.request.contextPath}/member/order/direct" method="get">
+                                            <input type="hidden" name="productId" value="${product.productId}">
+                                            <input type="hidden" name="quantity" value="1"><!-- 또는 선택한 수량 -->
+                                            <button type="submit" class="btn btn-primary">바로구매</button>
                                         </form>
                                     </c:if>
                                 </div>
