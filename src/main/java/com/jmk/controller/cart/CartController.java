@@ -51,7 +51,7 @@ public class CartController {
 
         int cartCount = cartService.getCartCount(member.getMemberId());
         model.addAttribute("cartCount", cartCount);
-        return "redirect:/main";
+        return "redirect:/member/cart/list";
     }
 
     @RequestMapping(value = "/member/cart/list" ,method = RequestMethod.GET)

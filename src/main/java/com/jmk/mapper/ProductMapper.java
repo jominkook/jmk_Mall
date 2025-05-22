@@ -35,4 +35,6 @@ public interface ProductMapper {
     );
 
     public int countProductByKeyword(@Param("keyword") String keyword);
+
+    public void increaseStock(@Param("productId") int productId, @Param("quantity") int quantity);
 }

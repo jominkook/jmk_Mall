@@ -3,21 +3,35 @@ package com.jmk.service.order;
 import com.jmk.dto.cart.CartDto;
 import com.jmk.dto.order.OrderDto;
 import com.jmk.dto.order.OrderProductDto;
+import com.jmk.dto.order.OrderSelectDto;
 import com.jmk.mapper.CartMapper;
 import com.jmk.mapper.OrderMapper;
 import com.jmk.mapper.PaymentMapper;
 import com.jmk.mapper.ProductMapper;
 import com.jmk.dto.payment.Payment;
-import com.jmk.vo.cart.Cart;
 import com.jmk.vo.product.Product;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
+
 
 @Service
 public class OrderServiceImpl implements OrderService {
+
+    @Value("${iamport.api-key}")
+    private String iamportApiKey;
+
+    @Value("${iamport.api-secret}")
+    private String iamportApiSecret;
+
 
     @Autowired
     private OrderMapper orderMapper;
@@ -159,6 +173,111 @@ public class OrderServiceImpl implements OrderService {
         }
 
         return memberOrderId;
+    }
+
+    @Transactional
+    @Override
+    public List<OrderSelectDto> orderSelect(String memberId, Integer adminCk) throws Exception {
+        return orderMapper.orderSelect(memberId, adminCk);
+    }
+
+    /*@Override
+    public void updateOrderProductStatus(int memberOrderProductId, String memberOrderStatus) throws Exception {
+        orderMapper.updateOrderProductStatus(memberOrderProductId,memberOrderStatus);
+    }*/
+
+    @Override
+    public void updateOrderStatusWithRefund(int memberOrderProductId, String memberOrderStatus) throws Exception {
+        orderMapper.updateOrderProductStatus(memberOrderProductId,memberOrderStatus);
+
+
+        // 2. 주문취소 승인일 때만 환불 및 재고 원복
+        if ("주문취소".equals(memberOrderStatus)) {
+            // 2-1. 결제정보 조회 (imp_uid 등)
+            String impUid;
+            try {
+                impUid = paymentMapper.selectImpUidByProductId(memberOrderProductId);
+            } catch (Exception e) {
+                throw new RuntimeException("imp_uid 조회 쿼리 오류: " + e.getMessage(), e);
+            }
+
+            // 2-2. 아임포트 환불 API 직접 호출 (IamportClient 없이)
+            try {
+                // 1. 토큰 발급
+                URL tokenUrl = new URL("https://api.iamport.kr/users/getToken");
+                HttpURLConnection conn = (HttpURLConnection) tokenUrl.openConnection();
+                conn.setRequestMethod("POST");
+                conn.setRequestProperty("Content-Type", "application/json");
+                conn.setDoOutput(true);
+
+                org.json.JSONObject tokenBody = new org.json.JSONObject();
+
+
+                tokenBody.put("imp_key", iamportApiKey);      // 본인 REST API KEY
+                tokenBody.put("imp_secret", iamportApiSecret);// 본인 REST API SECRET
+
+                try (OutputStream os = conn.getOutputStream()) {
+                    os.write(tokenBody.toString().getBytes());
+                }
+
+                BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                StringBuilder sb = new StringBuilder();
+                String line;
+                while ((line = br.readLine()) != null) sb.append(line);
+                br.close();
+
+                String accessToken = new org.json.JSONObject(sb.toString())
+                        .getJSONObject("response")
+                        .getString("access_token");
+
+                // 2. 환불(취소) 요청
+                URL cancelUrl = new URL("https://api.iamport.kr/payments/cancel");
+                HttpURLConnection cancelConn = (HttpURLConnection) cancelUrl.openConnection();
+                cancelConn.setRequestMethod("POST");
+                cancelConn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+                cancelConn.setRequestProperty("Authorization", accessToken);
+                cancelConn.setDoOutput(true);
+
+                String params = "imp_uid=" + impUid + "&reason=관리자 주문취소 승인";
+                try (OutputStream os = cancelConn.getOutputStream()) {
+                    os.write(params.getBytes());
+                }
+
+                BufferedReader cancelBr = new BufferedReader(new InputStreamReader(cancelConn.getInputStream()));
+                StringBuilder cancelSb = new StringBuilder();
+                while ((line = cancelBr.readLine()) != null) cancelSb.append(line);
+                cancelBr.close();
+
+                // 환불 성공 여부 확인
+                String result = cancelSb.toString();
+                if (result.contains("\"status\":\"cancelled\"")) {
+                    try {
+                        paymentMapper.updatePaymentStatusByProductId(memberOrderProductId, "결제취소");
+                    } catch (Exception e) {
+                        throw new RuntimeException("결제상태 변경 쿼리 오류: " + e.getMessage(), e);
+                    }
+                } else {
+                    throw new RuntimeException("아임포트 환불 실패: " + result);
+                }
+            } catch (Exception e) {
+                throw new RuntimeException("아임포트 환불 처리 중 오류: " + e.getMessage(), e);
+            }
+
+            // 2-4. 주문상품별 재고 원복
+            List<OrderProductDto> orderProducts;
+            try {
+                orderProducts = orderMapper.selectOrderProductsByProductId(memberOrderProductId);
+            } catch (Exception e) {
+                throw new RuntimeException("주문상품 정보 조회 쿼리 오류: " + e.getMessage(), e);
+            }
+            for (OrderProductDto op : orderProducts) {
+                try {
+                    productMapper.increaseStock(op.getProductId(), op.getQuantity());
+                } catch (Exception e) {
+                    throw new RuntimeException("재고 원복 쿼리 오류 (productId: " + op.getProductId() + "): " + e.getMessage(), e);
+                }
+            }
+        }
     }
 
 }

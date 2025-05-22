@@ -83,7 +83,11 @@
 										<label for="memberMail">이메일</label>
 										<div class="input-group">
 											<input type="email" class="form-control mail_input" name="memberMail" id="memberMail" required placeholder="이메일 입력">
-											<button type="button" class="btn btn-primary w-100 mail_check_button" style="min-width:80px;">전송</button>
+											<button type="button"
+													class="btn btn-primary btn-sm mail_check_button"
+													style="min-width:30px; font-size:0.8em; padding:2px 8px;">
+												전송
+											</button>
 										</div>
 										<span class="final_mail_ck text-danger" style="display:none;">이메일을 입력해주세요.</span>
 										<span class="mail_input_box_warn text-danger" style="display:none;"></span>
@@ -98,7 +102,12 @@
 											<label>주소</label>
 											<div class="input-group mb-2">
 												<input class="form-control address_input_1" name="memberAddr1" readonly="readonly" placeholder="우편번호">
-												<button type="button" class="btn btn-primary w-100 address_button" style="min-width:100px;" onclick="execution_daum_address()">주소 찾기</button>
+												<button type="button"
+														class="btn btn-primary btn-sm address_button"
+														style="min-width:30px; font-size:0.8em; padding:2px 8px;"
+														onclick="execution_daum_address()">
+													주소 찾기
+												</button>
 											</div>
 											<input class="form-control address_input_2 mb-2" name="memberAddr2" readonly="readonly" placeholder="기본주소">
 											<input class="form-control address_input_3" name="memberAddr3" readonly="readonly" placeholder="상세주소">

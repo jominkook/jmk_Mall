@@ -25,7 +25,7 @@
 				<div class="col-lg-5 col-md-8" data-aos="zoom-in" data-aos-delay="200">
 					<div class="login-form-wrapper">
 						<div class="login-header text-center">
-							<h2>떡 좋아</h2>
+							<h2>떡 조아</h2>
 							<p>로그인</p>
 						</div>
 

@@ -59,39 +59,39 @@
                 </div>
                 <!-- Actions & Member Info -->
                 <div class="header-actions d-flex align-items-center justify-content-end">
-                    <!-- 회원 정보/충전금액 표시 -->
                     <c:choose>
                         <c:when test="${member != null}">
-                            <div class="d-flex align-items-center ms-3" style="gap:8px;">
-                                  <span class="fw-semibold">
-                                    <i class="bi bi-person-circle me-1"></i>${member.memberId}
-                                  </span>
-                                  <span class="text-success fw-semibold">
-                                    <i class="bi bi-currency-dollar"></i>
-                                    <fmt:formatNumber value="${member.money}" pattern="#,###"/>원
-                                  </span>
-                                  <!-- a href="${pageContext.request.contextPath}/wishlist" class="header-action-btn d-none d-md-flex">
-                                      <i class="bi bi-heart"></i>
-                                      <span class="action-text d-none d-md-inline-block">Wishlist</span>
-                                  </a-->
-                                  <a href="${pageContext.request.contextPath}/member/cart/list" class="position-relative" style="display:inline-block;">
-                                      <i class="bi bi-cart" style="font-size:1.7em; color:#222;"></i>
-                                        <c:if test="${cartCount > 0}">
-                                            <span id="cart-count-badge"
-                                                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                                                  style="font-size:0.85em; min-width:22px; min-height:22px; display:flex; align-items:center; justify-content:center;">
-                                                    ${cartCount}
-                                            </span>
-                                            장바구니
-                                        </c:if>
-                                 </a>
-                                 <a href="/member/logout.do">로그아웃</a>
+                            <div class="d-flex align-items-center ms-3" style="gap:14px;">
+                                <!-- 아이디 -->
+                                <span class="fw-semibold d-flex align-items-center" style="font-size:1em;">
+                    <i class="bi bi-person-circle me-1"></i>${member.memberId}
+                </span>
+                                <!-- 장바구니 -->
+                                <a href="${pageContext.request.contextPath}/member/cart/list"
+                                   class="d-flex align-items-center position-relative"
+                                   style="font-size:1em; color:#222; text-decoration:none;">
+                                    <i class="bi bi-cart" style="font-size:1.5em;"></i>
+                                    <c:if test="${cartCount > 0}">
+                        <span id="cart-count-badge"
+                              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                              style="font-size:0.85em; min-width:22px; min-height:22px; display:flex; align-items:center; justify-content:center;">
+                                ${cartCount}
+                        </span>
+                                    </c:if>
+                                    <span class="ms-1">장바구니</span>
+                                </a>
+                                <!-- 로그아웃 -->
+                                <a href="/member/logout.do" class="btn btn-outline-secondary btn-sm d-flex align-items-center" style="height:32px;">로그아웃</a>
                             </div>
                         </c:when>
                         <c:otherwise>
-                            <div class="d-flex align-items-center ms-3" style="gap:8px;">
-                                <a href="/member/login" class="bi bi-person-circle me-1">로그인</a>
-                                <a href="/member/join" class="bi bi-person-circle me-1">회원가입</a>
+                            <div class="d-flex align-items-center ms-3" style="gap:12px;">
+                                <a href="/member/login" class="btn btn-outline-primary btn-sm d-flex align-items-center" style="height:32px;">
+                                    <i class="bi bi-person-circle me-1"></i>로그인
+                                </a>
+                                <a href="/member/join" class="btn btn-outline-success btn-sm d-flex align-items-center" style="height:32px;">
+                                    <i class="bi bi-person-circle me-1"></i>회원가입
+                                </a>
                             </div>
                         </c:otherwise>
                     </c:choose>
@@ -110,13 +110,14 @@
                             <li><a href="${pageContext.request.contextPath}/" class="active">Home</a></li>
                             <li><a href="${pageContext.request.contextPath}/admin/productRegister">상품등록</a></li>
                             <li><a href="${pageContext.request.contextPath}/productSelect">상품조회</a></li>
-                            <li><a href="${pageContext.request.contextPath}/review">고객주문내역</a></li>
+                            <li><a href="${pageContext.request.contextPath}/order/select">고객주문내역</a></li>
                         </ul>
                     </c:when>
                     <c:otherwise>
                         <ul>
                             <li><a href="${pageContext.request.contextPath}/" class="active">Home</a></li>
                             <li><a href="${pageContext.request.contextPath}/productSelect">상품조회</a></li>
+                            <li><a href="${pageContext.request.contextPath}/order/select">나의 주문내역</a></li>
                         </ul>
                     </c:otherwise>
                 </c:choose>

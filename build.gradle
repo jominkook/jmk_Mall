@@ -19,6 +19,8 @@ repositories {
 }
 
 dependencies {
+
+    implementation 'org.json:json:20230227'
     // Jakarta Servlet API (Tomcat 10.x 지원)
     providedCompile 'jakarta.servlet:jakarta.servlet-api:5.0.0' // Jakarta Servlet API
     providedCompile 'org.eclipse.jetty:apache-jsp:10.0.14' // JSP 구현체
@@ -67,6 +69,9 @@ dependencies {
 
     //결제관련
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.5'
+
+
+
 
     // Testing
     testImplementation 'junit:junit:4.13.2'

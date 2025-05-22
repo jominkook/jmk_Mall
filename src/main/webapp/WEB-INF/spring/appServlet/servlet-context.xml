@@ -14,7 +14,7 @@
 	<mvc:annotation-driven />
 
 	<!-- 정적 리소스 매핑 -->
-	<mvc:resources mapping="/upload/**" location="file:///C:/upload/" />
+	<mvc:resources mapping="/upload/**" location="file:/upload/" />
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
 	<!-- View Resolver -->

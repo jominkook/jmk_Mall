@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderProductDto {
-    private int memberOrderItemId;
+    private int memberOrderProductId;
     private int memberOrderId;
     private int productId;
     private int quantity;

@@ -1,8 +1,11 @@
 package com.jmk.service.payment;
 
+import com.jmk.mapper.PaymentMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
 
@@ -12,6 +15,10 @@ import java.util.Map;
 
 @Service
 public class PaymentServiceImpl implements PaymentService {
+
+    @Autowired
+    private PaymentMapper paymentMapper;
+
     @Value("${iamport.api-key}")
     private String API_KEY;
 
@@ -50,4 +57,10 @@ public class PaymentServiceImpl implements PaymentService {
 
         return "paid".equals(status); // 결제 완료 상태만 true
     }
+
+    @Override
+    public String getImpUidByProductId(int memberOrderProductId) {
+        return paymentMapper.selectImpUidByProductId(memberOrderProductId);
+    }
+
 }

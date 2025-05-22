@@ -33,4 +33,6 @@ public class MemberServicelmpl implements MemberService {
     public Member memberLogin(Member member) throws Exception {
         return membermapper.memberLogin(member);
     }
+
+
  }

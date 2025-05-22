@@ -21,23 +21,23 @@
         }
     }
     .product-card {
-        padding: 10px 4px 10px 4px;
-        border-radius: 8px;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+        padding: 16px 10px 16px 10px; /* 좌우 padding만 기존보다 +6px */
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         background: #fff;
         height: 100%;
         margin-bottom: 0;
     }
     .product-image {
-        margin-bottom: 4px;
+        margin-bottom: 8px;
     }
     .main-image {
-        width: 110px;
-        height: 110px;
+        width: 120px;
+        height: 120px;
         object-fit: cover;
         display: block;
         margin: 0 auto;
-        border-radius: 6px;
+        border-radius: 8px;
     }
     .product-title {
         margin: 4px 0 2px 0;
@@ -70,15 +70,17 @@
 <main class="main">
     <!-- Search Product List Section -->
     <section id="search-product-list" class="search-product-list section">
+        <h2 class="mb-4 text-center">상품 조회</h2>
         <div class="container">
             <!-- 검색 폼 중앙 배치 -->
             <div class="row justify-content-center mb-4">
-                <div class="col-12 col-md-6">
-                    <form class="search-form desktop-search-form" action="${pageContext.request.contextPath}/productSelect" method="get">
+                <div class="col-12 col-md-8 col-lg-6">
+                    <form class="search-form desktop-search-form shadow-sm rounded-4 px-3 py-2 bg-white"
+                          action="${pageContext.request.contextPath}/productSelect" method="get" style="border:1px solid #e0e0e0;">
                         <div class="input-group">
-                            <input type="text" class="form-control" name="q" value="${keyword}" placeholder="상품 검색...">
-                            <button class="btn search-btn" type="submit">
-                                <i class="bi bi-search"></i>
+                            <input type="text" class="form-control border-0 bg-transparent" name="q" value="${keyword}" placeholder="상품 검색..." style="font-size:1.1em;">
+                            <button class="btn btn-primary px-4 rounded-end" type="submit" style="background:#6c63ff; border:none;">
+                                <i class="bi bi-search" style="font-size:1.3em;"></i>
                             </button>
                         </div>
                     </form>
@@ -96,8 +98,8 @@
                                     <a href="#" style="color:#222; text-decoration:none;">${product.productName}</a>
                                 </h4>
                                 <div class="product-meta">
-                                    <div class="product-price">
-                                        <fmt:formatNumber value="${product.productPrice}" type="currency" currencySymbol="₩"/>
+                                    <div class="product-price" style="text-align:right;">
+                                        <fmt:formatNumber value="${product.productPrice}" pattern="#,###"/>원
                                     </div>
                                 </div>
                                 <div class="product-material">재료: ${product.productIngredient}</div>
@@ -119,7 +121,7 @@
                                             <button type="submit"
                                                     class="btn btn-xs btn-success px-2 py-1"
                                                     style="font-size:0.85em; min-width:60px;">
-                                                <i class="bi bi-cart-plus"></i> 장바구니 담기
+                                                장바구니 담기
                                             </button>
                                         </form>
 <%--                                        <form action="${pageContext.request.contextPath}/member/order/cart" method="get">--%>
@@ -128,7 +130,7 @@
                                         <form action="${pageContext.request.contextPath}/member/order/direct" method="get">
                                             <input type="hidden" name="productId" value="${product.productId}">
                                             <input type="hidden" name="quantity" value="1"><!-- 또는 선택한 수량 -->
-                                            <button type="submit" class="btn btn-primary">바로구매</button>
+                                            <button type="submit" class="btn btn-primary">구매</button>
                                         </form>
                                     </c:if>
                                 </div>

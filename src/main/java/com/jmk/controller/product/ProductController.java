@@ -48,7 +48,7 @@ public class ProductController {
         String imageUrl = null;
         if (productImage != null && !productImage.isEmpty()) {
             // 실제 웹 프로젝트 내부 경로로 저장
-            String uploadDir = "C:/upload/";
+            String uploadDir = "/upload/";
 
             File dir = new File(uploadDir);
             if (!dir.exists()) dir.mkdirs();
